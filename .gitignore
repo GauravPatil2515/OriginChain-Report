@@ -15,6 +15,15 @@
 __pycache__/
 *.pyc
 
+# Working render caches
+working/renders*
+working/*.aux
+working/*.log
+working/*.out
+working/*.toc
+working/*.lof
+working/*.lot
+
 # OS generated
 .DS_Store
 Thumbs.db

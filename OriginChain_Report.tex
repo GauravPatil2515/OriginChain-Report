@@ -18,7 +18,12 @@
 \usepackage{caption}
 \usepackage{enumitem}
 \usepackage{float}
+\usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
+
+% Break long URLs and monospace identifiers cleanly
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-\do_}
 
 % Page numbering and header styling
 \pagestyle{fancy}
@@ -29,47 +34,75 @@
 \renewcommand{\footrulewidth}{0pt}
 \setlength{\headheight}{15pt}
 
-% Title formats
+% Caption styling: academic 10.5pt bold title with standard font
+\captionsetup{
+  font={small,stretch=1.2},
+  labelfont=bf,
+  justification=centering,
+  skip=8pt
+}
+
+% Chapter and section title formatting
 \titleformat{\chapter}[display]
-  {\normalfont\bfseries\centering}{\Large CHAPTER \thechapter}{10pt}{\LARGE\uppercase}
-\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+  {\normalfont\bfseries\centering}{\Large CHAPTER \thechapter}{8pt}{\LARGE\uppercase}
+\titlespacing*{\chapter}{0pt}{-10pt}{20pt}
 
 \titleformat{\section}
   {\normalfont\bfseries\large}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{14pt}{6pt}
 
 \titleformat{\subsection}
   {\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+% Table column helper definitions
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
 \begin{document}
 
 % -------------------------------------------------------------
-% COVER PAGE
+% COVER / TITLE PAGE (Unnumbered)
 % -------------------------------------------------------------
 \begin{titlepage}
 \thispagestyle{empty}
 \begin{center}
-    {\large \textbf{ORIGINCHAIN: BLOCKCHAIN-BASED QUALITY ASSURANCE, AUTHENTICATION AND SUPPLY-CHAIN TRACEABILITY FOR LUXURY COSMETICS}\par}
+    \vspace*{0.2cm}
+    {\large \textbf{ORIGINCHAIN: BLOCKCHAIN-BASED QUALITY ASSURANCE,\\
+    AUTHENTICATION AND SUPPLY-CHAIN TRACEABILITY\\
+    FOR LUXURY COSMETICS}\par}
+    
     \vspace{1.0cm}
     {\normalsize Submitted in partial fulfilment of the requirements of the degree of\par}
     \vspace{0.3cm}
     {\large \textbf{BACHELOR OF COMPUTER ENGINEERING}\par}
+    
     \vspace{0.8cm}
     {\normalsize by\par}
-    \vspace{0.4cm}
-    {\textbf{Durva Waghchaure (23102152)}\par}
-    {\textbf{Aryan Singh (23102154)}\par}
-    {\textbf{Purvika Thombare (23102097)}\par}
-    {\textbf{Aradhya Thakur (23102110)}\par}
-    \vspace{1.0cm}
-    {\normalsize Under the Guidance of\par}
     \vspace{0.3cm}
+    {\textbf{Durva Waghchaure (23102152)}\par}
+    \vspace{0.15cm}
+    {\textbf{Aryan Singh (23102154)}\par}
+    \vspace{0.15cm}
+    {\textbf{Purvika Thombare (23102097)}\par}
+    \vspace{0.15cm}
+    {\textbf{Aradhya Thakur (23102110)}\par}
+    
+    \vspace{0.9cm}
+    {\normalsize Under the Guidance of\par}
+    \vspace{0.25cm}
     {\large \textbf{Prof. Pranali Patil}\par}
+    
     \vfill
-    \includegraphics[width=2.8cm]{images/college_logo.png}\par
-    \vspace{0.4cm}
+    \includegraphics[width=2.6cm]{images/college_logo.png}\par
+    \vspace{0.35cm}
     {\large \textbf{Department of Computer Engineering}\par}
+    \vspace{0.15cm}
     {\large \textbf{A. P. SHAH INSTITUTE OF TECHNOLOGY, THANE}\par}
+    \vspace{0.15cm}
     {\normalsize \textbf{University of Mumbai}\par}
+    \vspace{0.15cm}
     {\normalsize \textbf{2026--2027}\par}
 \end{center}
 \end{titlepage}
@@ -78,48 +111,48 @@
 \setcounter{page}{2}
 
 % -------------------------------------------------------------
-% CERTIFICATE
+% CERTIFICATE (Page ii)
 % -------------------------------------------------------------
 \newpage
 \thispagestyle{plain}
 \begin{center}
     \includegraphics[width=2.2cm]{images/college_logo.png}\par
-    \vspace{0.3cm}
+    \vspace{0.25cm}
     {\large \textbf{A. P. SHAH INSTITUTE OF TECHNOLOGY, THANE}\par}
-    \vspace{0.6cm}
+    \vspace{0.45cm}
     {\Large \textbf{CERTIFICATE}\par}
 \end{center}
-\vspace{0.6cm}
+\vspace{0.5cm}
 \noindent This is to certify that the project entitled \textbf{``OriginChain: Blockchain-Based Quality Assurance, Authentication and Supply-Chain Traceability for Luxury Cosmetics''} is a bonafide work of \textbf{Durva Waghchaure (23102152)}, \textbf{Aryan Singh (23102154)}, \textbf{Purvika Thombare (23102097)}, and \textbf{Aradhya Thakur (23102110)} submitted to the University of Mumbai in partial fulfilment of the requirement for the award of the degree of \textbf{Bachelor of Engineering in Computer Engineering}.
 
 \vspace{2.2cm}
 \noindent
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}cc}
-    \underline{\hspace{5cm}} & \underline{\hspace{5cm}} \\
+    \underline{\hspace{5.2cm}} & \underline{\hspace{5.2cm}} \\
     \textbf{Prof. Pranali Patil} & \textbf{Dr. Rushikesh R. Nikam} \\
     Guide & Project Coordinator \\
-    \vspace{1.8cm} & \vspace{1.8cm} \\
-    \underline{\hspace{5cm}} & \underline{\hspace{5cm}} \\
+    \vspace{2.0cm} & \vspace{2.0cm} \\
+    \underline{\hspace{5.2cm}} & \underline{\hspace{5.2cm}} \\
     \textbf{Dr. Sachin Malave} & \textbf{Dr. Uttam Kolekar} \\
     Head of Department & Principal \\
 \end{tabular*}
 
 \vspace{0.8cm}
-\noindent Date: \underline{\hspace{3cm}}
+\noindent Date: \underline{\hspace{3.5cm}}
 
 % -------------------------------------------------------------
-% PROJECT APPROVAL
+% PROJECT APPROVAL (Page iii)
 % -------------------------------------------------------------
 \newpage
 \thispagestyle{plain}
 \begin{center}
     \includegraphics[width=2.2cm]{images/college_logo.png}\par
-    \vspace{0.3cm}
+    \vspace{0.25cm}
     {\large \textbf{A. P. SHAH INSTITUTE OF TECHNOLOGY, THANE}\par}
-    \vspace{0.6cm}
+    \vspace{0.45cm}
     {\Large \textbf{Project Report Approval for B.E.}\par}
 \end{center}
-\vspace{0.6cm}
+\vspace{0.5cm}
 \noindent This project report entitled \textbf{``OriginChain: Blockchain-Based Quality Assurance, Authentication and Supply-Chain Traceability for Luxury Cosmetics''} by \textbf{Durva Waghchaure, Aryan Singh, Purvika Thombare, and Aradhya Thakur} is approved for the degree of \textbf{Bachelor of Engineering in Computer Engineering, 2026--2027}.
 
 \vspace{2.0cm}
@@ -127,84 +160,89 @@
 
 \vspace{0.8cm}
 \noindent
-\begin{tabular}{p{0.5\textwidth}p{0.45\textwidth}}
-    \textbf{Examiner Name} & \textbf{Signature} \\[1.5cm]
-    1. \underline{\hspace{6cm}} & \underline{\hspace{5cm}} \\[1.5cm]
-    2. \underline{\hspace{6cm}} & \underline{\hspace{5cm}} \\
-\end{tabular}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
+    \textbf{Examiner Name} & \textbf{Signature} \\[1.6cm]
+    1. \underline{\hspace{6.5cm}} & \underline{\hspace{5.5cm}} \\[1.6cm]
+    2. \underline{\hspace{6.5cm}} & \underline{\hspace{5.5cm}} \\
+\end{tabular*}
 
-\vspace{1.8cm}
+\vspace{2.0cm}
 \noindent Date: \underline{\hspace{4cm}} \hfill Place: \underline{\hspace{4cm}}
 
 % -------------------------------------------------------------
-% DECLARATION
+% DECLARATION (Page iv)
 % -------------------------------------------------------------
 \newpage
 \thispagestyle{plain}
 \begin{center}
     {\Large \textbf{Declaration}\par}
 \end{center}
-\vspace{0.8cm}
+\vspace{0.6cm}
 \noindent We declare that this written submission represents our ideas in our own words and where others' ideas or words have been included, we have adequately cited and referenced the original sources. We also declare that we have adhered to all principles of academic honesty and integrity and have not misrepresented or fabricated or falsified any idea/data/fact/source in our submission. We understand that any violation of the above will be cause for disciplinary action by the Institute and can also evoke penal action from the sources which have thus not been properly cited or from whom proper permission has not been taken when needed.
 
-\vspace{1.8cm}
+\vspace{2.0cm}
 \noindent
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr}
     \underline{\hspace{5.5cm}} & \underline{\hspace{5.5cm}} \\
-    \textbf{Durva Waghchaure (23102152)} & \textbf{Aryan Singh (23102154)} \\[1.8cm]
+    \textbf{Durva Waghchaure (23102152)} & \textbf{Aryan Singh (23102154)} \\[2.0cm]
     \underline{\hspace{5.5cm}} & \underline{\hspace{5.5cm}} \\
     \textbf{Purvika Thombare (23102097)} & \textbf{Aradhya Thakur (23102110)} \\
 \end{tabular*}
 
-\vspace{1.5cm}
+\vspace{1.8cm}
 \noindent Date: \underline{\hspace{3.5cm}}
 
 % -------------------------------------------------------------
-% ABSTRACT
+% ABSTRACT (Page v - Single page, perfectly fitted)
 % -------------------------------------------------------------
 \newpage
 \thispagestyle{plain}
 \begin{center}
     {\Large \textbf{Abstract}\par}
 \end{center}
-\vspace{0.5cm}
+\vspace{0.25cm}
+{\small\setstretch{1.12}
 Counterfeit and mishandled luxury cosmetics are difficult for a buyer to detect: a bottle may look perfect while its contents, batch history or storage conditions differ from what the label claims. Static barcodes and printed seals are easy to copy, and a conventional database can be edited by anyone with enough privilege. This project, \textbf{OriginChain}, proposes and demonstrates a blockchain-based system that combines stage-by-stage quality assurance with tamper-evident product authentication and traceability for luxury cosmetics.
 
 The implemented demonstration follows one fictional flagship product, the Aurelia Prestige Renewal Serum, from raw-material receipt through manufacturing, distribution and retail to consumer verification. Each actor (supplier, manufacturer, distributor, retailer) must pass a defined set of quality checks, with supporting PDF/PNG/JPEG evidence, before custody can move on. Evidence files are hashed with Keccak-256; compact fingerprints of the product, of each approved stage and of each evidence file are committed to a Solidity smart contract running on a local Hardhat Ethereum Virtual Machine. Full operational records stay off-chain in SQLite, so the ledger remains small and private. The backend is built with FastAPI and Web3.py; users authenticate with Argon2-hashed passwords and short-lived JSON Web Tokens, and role-based access control is enforced on the server and again by the contract's owner checks.
 
 A consumer can enter a product code and receive a redacted, read-only verification result that reports whether the product is Authentic or Suspicious, whether every stage was approved, and which evidence the manufacturer chose to make public. A built-in tamper demonstration shows that editing a database record is detected because the recomputed metadata hash no longer matches the on-chain value. Quality gates are mapped to metadata of real standards (the Cosmetics Rules 2020 and selected BIS and ISO cosmetics standards) purely as traceability references; the project makes no certification or compliance claim. The current build passes 51 backend tests and 17 smart-contract tests.
 
-\vspace{0.4cm}
+\vspace{0.25cm}
 \noindent \textbf{Contribution to Sustainable Development Goals (SDGs):} OriginChain supports SDG 12 (Responsible Consumption and Production) by making product origin and handling transparent and by discouraging counterfeit goods; SDG 9 (Industry, Innovation and Infrastructure) through an innovative, auditable digital infrastructure for supply chains; SDG 3 (Good Health and Well-being) by reducing the chance that unsafe or substandard cosmetics reach users; and SDG 16 (Peace, Justice and Strong Institutions) through accountable, attributable and tamper-evident records.
 
-\vspace{0.4cm}
+\vspace{0.25cm}
 \noindent \textbf{Layout of the Report:} The first chapter introduces the problem and the project. The second reviews the literature on blockchain traceability, anti-counterfeiting and cosmetics quality standards. The third states the limitations of existing systems and the research gap, and the fourth gives the problem statement, objectives and scope. The fifth presents the proposed system with its architecture and UML diagrams, algorithms, design details and methodology. The sixth describes the experimental setup, the seventh the project plan, the eighth the expected outcome and the ninth the projected cost analysis, followed by references.
+\par}
 
 % -------------------------------------------------------------
-% TABLE OF CONTENTS & LISTS
+% TABLE OF CONTENTS (Page vi)
 % -------------------------------------------------------------
 \newpage
 \tableofcontents
 
+% -------------------------------------------------------------
+% LIST OF FIGURES & LIST OF TABLES (Page vii)
+% -------------------------------------------------------------
 \newpage
 \listoffigures
-
-\newpage
+\vspace{0.8cm}
 \listoftables
 
 % -------------------------------------------------------------
-% ABBREVIATIONS
+% ABBREVIATIONS (Page viii)
 % -------------------------------------------------------------
 \newpage
 \thispagestyle{plain}
 \begin{center}
     {\Large \textbf{ABBREVIATIONS}\par}
 \end{center}
-\vspace{0.5cm}
+\vspace{0.4cm}
 \noindent
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{l X}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{p{3.2cm} Y}
 \toprule
 \textbf{Abbreviation} & \textbf{Expansion} \\
 \midrule
@@ -255,8 +293,8 @@ Printed barcodes, holograms and static QR codes can be duplicated, and centralis
 \noindent \textbf{Program Specific Outcomes:} PSO1 is met by building a complete working application, PSO2 by following standard software practices with 68 automated tests, and PSO3 by using modern blockchain technology that can lead to entrepreneurship, higher studies or industry work.
 
 \section{Overview of OriginChain}
-OriginChain is a working, end-to-end demonstration that tracks one fictional luxury anti-aging serum, the Aurelia Prestige Renewal Serum (product code \texttt{OC-LUX-SERUM-0001}, batch \texttt{APR-2026-001}), from raw-material receipt to the retail shelf. The product, the companies and all inspection results are fictional demonstration data; only the standards metadata that the quality checks refer to is real. The system is built around four core ideas:
-\begin{itemize}[leftmargin=1.5em]
+OriginChain is a working, end-to-end demonstration that tracks one fictional luxury anti-aging serum, the Aurelia Prestige Renewal Serum (product code \texttt{OC\allowbreak-LUX\allowbreak-SERUM\allowbreak-0001}, batch \texttt{APR\allowbreak-2026\allowbreak-001}), from raw-material receipt to the retail shelf. The product, the companies and all inspection results are fictional demonstration data; only the standards metadata that the quality checks refer to is real. The system is built around four core ideas:
+\begin{itemize}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
     \item \textbf{Stage-gated quality assurance:} The supply chain is modelled as four operational stages: raw-material supplier, manufacturer, distributor and retailer. Each stage has a defined list of quality checks (24 in total: 5 supplier, 8 manufacturer, 5 distributor and 6 retail). A stage can be approved, and custody can be transferred, only when every mandatory check passes and every required piece of evidence exists and is intact.
     \item \textbf{Evidence with integrity and trust:} Certificates, laboratory reports and inspection photographs are uploaded as PDF, PNG or JPEG files, hashed with Keccak-256, and re-verified on demand. For critical reports (certificate of analysis, microbiology and preservation efficacy) the issuer must also be currently trusted in a local registry of fictional issuers.
     \item \textbf{Details off-chain, fingerprints on-chain:} Full records and files remain in SQLite and on disk. The Solidity contract stores only 32-byte hashes, owner addresses, status codes and events, which keeps the ledger compact and private while still making tampering detectable.
@@ -270,7 +308,7 @@ Cosmetics are an ideal test case for a quality-aware traceability system for thr
 
 \section{Technologies Used}
 The demonstration uses a clean, modern, and reproducible technology stack that runs entirely on local development environments:
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
     \item \textbf{Backend:} Python 3.13 with FastAPI and asynchronous request handling, communicating with the blockchain layer via Web3.py.
     \item \textbf{Database:} SQLite with structured relational schemas and foreign-key constraints for local state persistence.
     \item \textbf{Smart Contract:} Solidity (version 0.8.28+) compiled, tested, and deployed with Hardhat 3 against a local Ethereum Virtual Machine (EVM).
@@ -279,7 +317,7 @@ The demonstration uses a clean, modern, and reproducible technology stack that r
 \end{itemize}
 
 \section{Significant Contributions}
-\begin{enumerate}[leftmargin=1.5em]
+\begin{enumerate}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
     \item A hybrid on-chain/off-chain architecture for cosmetics traceability in which only compact commitments (product metadata hash, approved-stage snapshot hash and evidence hashes) are written to the ledger.
     \item A stage-gated quality model with 24 checks, required-evidence rules, live re-evaluation at every transfer, and automatic invalidation of an approval when a result or evidence is edited.
     \item A two-part evidence model that separates file integrity from issuer verification, with frozen issuer snapshots so that later revocation does not silently rewrite history.
@@ -297,7 +335,7 @@ Related work is surveyed in Chapter 2. Limitations of existing systems are ident
 \chapter{Literature Survey}
 
 \section{Overview}
-This chapter reviews published literature bearing on blockchain traceability, anti-counterfeiting, smart contracts, and cosmetics regulations. Each group of papers is appraised for what it contributes and what it leaves open for this project.
+This chapter reviews published literature bearing on blockchain traceability, anti-llowbreak counterfeiting, smart contracts, and cosmetics regulations. Each group of papers is appraised for what it contributes and what it leaves open for this project.
 
 \section{Blockchain and Smart-Contract Foundations}
 Nakamoto [2] introduced peer-to-peer electronic cash governed by proof-of-work and chained cryptographic hashes, eliminating the need for a central trusted intermediary. Wood [4] formalised the Ethereum state machine and smart contract execution environment, enabling programmatic rule enforcement such as ``only the current owner may transfer custody.'' Zheng et al. [3], [14] surveyed blockchain architectures, highlighting on-chain scalability, storage limits, and high gas costs, which justify OriginChain's hybrid design of anchoring hashes on-chain while storing rich data off-chain. Christidis and Devetsikiotis [5] and Reyna et al. [15] analyzed IoT and decentralized systems, emphasizing off-chain storage management for large files such as laboratory reports.
@@ -325,7 +363,8 @@ Table 2.1 summarizes the reviewed literature, domains, applied techniques, and t
 \caption{Summary of Related Work}
 \label{tab:lit_survey}
 \small
-\begin{tabularx}{\textwidth}{p{2.8cm} p{2.2cm} p{3.5cm} X}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{L{2.4cm} L{2.5cm} L{3.1cm} Y}
 \toprule
 \textbf{Reference} & \textbf{Domain} & \textbf{Technique} & \textbf{Remaining Gap for OriginChain} \\
 \midrule
@@ -353,7 +392,7 @@ The literature demonstrates that while blockchains guarantee immutability, exist
 
 Traditional supply-chain authentication mechanisms and early blockchain prototypes suffer from several notable limitations:
 
-\begin{enumerate}[leftmargin=1.5em]
+\begin{enumerate}[leftmargin=1.8em, itemsep=4pt, parsep=0pt]
     \item \textbf{Copyable or Editable Records:} Printed barcodes, packaging holograms, and serial numbers can be easily counterfeited or duplicated. Centralized databases can be modified or manipulated by privileged insiders without an audit trail.
     \item \textbf{Authenticity Without Quality:} Existing anti-counterfeiting architectures trace ownership changes but fail to verify whether required laboratory tests and safety checks were successfully executed prior to custody hand-off.
     \item \textbf{Unverified Inputs (``Garbage In, Garbage Out''):} Most traceability systems assume input data is accurate without verifying digital signatures, cryptographic hashes of supporting files, or issuer accreditation.
@@ -371,8 +410,8 @@ Traditional supply-chain authentication mechanisms and early blockchain prototyp
 Luxury cosmetics are highly susceptible to counterfeiting and improper storage, yet end consumers and downstream retailers have no tamper-proof method to verify product authenticity or confirm whether upstream actors completed mandatory quality checks. Existing systems rely on copyable packaging seals or centralized databases susceptible to silent insider modification. A comprehensive solution is required that makes product identity, stage-wise quality approvals, and supporting laboratory evidence cryptographically verifiable by consumers without exposing confidential commercial information.
 
 \section{Objectives}
-\begin{enumerate}[leftmargin=1.5em]
-    \item To record product identity and custody on an append-only, tamper-evident blockchain ledger that cannot be silently modified by the application database.
+\begin{enumerate}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
+    \item To record product identity and custody on an append-llowbreak only, tamper-llowbreak evident blockchain ledger that cannot be silently modified by the application database.
     \item To enforce stage-by-stage quality gates (Supplier, Manufacturer, Distributor, Retailer) so that custody transfer is blocked until the current stage passes all mandatory checks.
     \item To cryptographically bind supporting evidence documents (Certificates of Analysis, test reports, photographs) using Keccak-256 hashes.
     \item To model evidence issuer trustworthiness independently from raw file integrity, preserving historical verification states.
@@ -384,7 +423,7 @@ Luxury cosmetics are highly susceptible to counterfeiting and improper storage, 
 
 \section{Scope}
 \subsection{In Scope}
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
     \item One fictional luxury anti-aging facial serum across four operational stages and public consumer verification.
     \item Complete local implementation: FastAPI, SQLite, Web3.py, Solidity smart contracts deployed on a local Hardhat EVM, and responsive web UI.
     \item Seeded realistic test fixtures: operational users, quality templates (24 checks), product specifications, and trusted/revoked issuers.
@@ -392,7 +431,7 @@ Luxury cosmetics are highly susceptible to counterfeiting and improper storage, 
 \end{itemize}
 
 \subsection{Out of Scope (Future Work)}
-\begin{itemize}[leftmargin=1.5em]
+\begin{itemize}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
     \item Public Ethereum mainnet deployment and cryptocurrency gas payment management.
     \item Hardware NFC/RFID tag integration and physical packaging anti-tamper sensors.
     \item Production multi-factor authentication, enterprise key management, and cloud object storage.
@@ -409,118 +448,135 @@ OriginChain is engineered around the principle of provable verification: ensurin
 
 \vspace{0.3cm}
 \noindent \textbf{Design Principles:}
-\begin{enumerate}[leftmargin=1.5em]
+\begin{enumerate}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
     \item \textbf{Minimal On-Chain Footprint:} Detailed product data and evidence files remain off-chain; only 32-byte Keccak-256 hashes, status codes, and owner addresses are committed to the contract.
     \item \textbf{Dynamic Quality Gating:} Stage approvals are verified dynamically during custody transfer rather than relying on static database flags.
     \item \textbf{Dual Identity Separation:} Application user authentication (JWT/Argon2) is decoupled from blockchain signing keys held securely on the server.
     \item \textbf{Privacy by Design:} Internal batch sizes, supplier identities, and proprietary formulation data are withheld from public consumer responses.
 \end{enumerate}
 
+\clearpage
 \section{System Architecture}
 Figure 5.1 illustrates the layered architecture of OriginChain, depicting the presentation, application backend, local persistence, and blockchain tiers.
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=0.55\textheight,keepaspectratio]{images/fig_5_2_architecture.png}
+\includegraphics[width=0.82\textwidth,height=0.72\textheight,keepaspectratio]{images/fig_5_2_architecture.png}
 \caption{Layered Architecture of OriginChain}
 \label{fig:arch}
 \end{figure}
 
+\clearpage
 \section{Use Case Diagram}
 Figure 5.2 outlines the interactions between key supply-chain actors (Supplier, Manufacturer, Distributor, Retailer, Consumer, Admin) and the OriginChain platform.
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=0.55\textheight,keepaspectratio]{images/fig_5_3_usecase.png}
+\includegraphics[width=0.80\textwidth,height=0.72\textheight,keepaspectratio]{images/fig_5_3_usecase.png}
 \caption{Use Case Diagram of OriginChain}
 \label{fig:usecase}
 \end{figure}
 
+\clearpage
 \section{Workflow (Activity) Diagram}
 Figure 5.3 shows the sequential workflow of a product from initial registration through stage quality evaluations, ownership transfers, and consumer QR verification.
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=0.55\textheight,keepaspectratio]{images/fig_5_4_workflow.png}
+\includegraphics[width=0.80\textwidth,height=0.72\textheight,keepaspectratio]{images/fig_5_4_workflow.png}
 \caption{End-to-End Workflow of a Product}
 \label{fig:workflow}
 \end{figure}
 
+\clearpage
 \section{Quality-Gate Flow}
 Figure 5.4 depicts the decision logic executed during quality-gate evaluation for any operational stage.
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=0.55\textheight,keepaspectratio]{images/fig_5_5_qualitygate.png}
+\includegraphics[width=0.82\textwidth,height=0.72\textheight,keepaspectratio]{images/fig_5_5_qualitygate.png}
 \caption{Quality-Gate Evaluation for One Stage}
 \label{fig:qualitygate}
 \end{figure}
 
+\clearpage
 \section{Sequence Diagram}
 Figure 5.5 illustrates the sequence of interactions between the user interface, FastAPI backend, SQLite database, and Solidity smart contract during product registration.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth,keepaspectratio]{images/fig_5_6_sequence.png}
+\includegraphics[width=0.98\textwidth,keepaspectratio]{images/fig_5_6_sequence.png}
 \caption{Sequence Diagram for Product Registration}
 \label{fig:sequence}
 \end{figure}
 
+\clearpage
 \section{Class Diagram of the Smart Contract}
 Figure 5.6 presents the class structure of the \texttt{OriginChain} smart contract, including structs, state mappings, function signatures, and events.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.90\textwidth,keepaspectratio]{images/fig_5_7_classdiagram.png}
+\includegraphics[width=0.95\textwidth,height=0.72\textheight,keepaspectratio]{images/fig_5_7_classdiagram.png}
 \caption{Class Diagram of the OriginChain Smart Contract}
 \label{fig:classdiagram}
 \end{figure}
 
+\clearpage
 \section{Entity-Relationship Diagram}
 Figure 5.7 shows the relational database schema implemented in SQLite, modeling users, products, batches, stages, checks, and evidence records.
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=0.55\textheight,keepaspectratio]{images/fig_5_8_erd.png}
+\includegraphics[width=0.75\textwidth,height=0.72\textheight,keepaspectratio]{images/fig_5_8_erd.png}
 \caption{Entity-Relationship Diagram (Core SQLite Entities)}
 \label{fig:erd}
 \end{figure}
 
+\clearpage
 \section{Algorithms}
 \noindent \textbf{Algorithm 1: Product Metadata Hashing}
-\begin{enumerate}[leftmargin=1.5em]
-    \item Build a metadata dictionary with canonical fields: \texttt{batch\_number}, \texttt{brand}, \texttt{description}, \texttt{name}, and \texttt{product\_code}.
-    \item Serialize into canonical JSON with sorted keys, no whitespace padding, and preserved UTF-8 encoding.
-    \item Compute metadata hash $H = \text{Keccak-256}(\text{JSON})$ and product key $K = \text{Keccak-256}(\text{trimmed}(\text{product\_code}))$.
-    \item Invoke \texttt{registerProduct(K, H)} on the smart contract; record $K, H$, and transaction hash in SQLite.
+\begin{enumerate}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
+    \item Build a metadata dictionary with canonical keys: \texttt{batch\allowbreak\_number}, \texttt{brand}, \texttt{description}, \texttt{name}, and \texttt{product\allowbreak\_code}.
+    \item Serialize into canonical JSON with sorted keys, no whitespace padding, and UTF-8 encoding.
+    \item Compute the metadata hash:
+    \[
+    H = \text{Keccak-256}(\text{canonical\_JSON})
+    \]
+    \item Compute the product key:
+    \[
+    K = \text{Keccak-256}(\text{trimmed}(\text{product\_code}))
+    \]
+    \item Invoke \texttt{registerProduct(K, H)} on the smart contract; record $K$, $H$, and the transaction hash in SQLite.
 \end{enumerate}
 
-\vspace{0.3cm}
+\vspace{0.4cm}
 \noindent \textbf{Algorithm 2: Stage Approval Logic}
-\begin{enumerate}[leftmargin=1.5em]
+\begin{enumerate}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
     \item Retrieve all mandatory and optional checks for the active stage.
-    \item If any mandatory check has failed, set stage status to \texttt{HOLD}; if any mandatory check is incomplete, maintain status as \texttt{PENDING}.
+    \item If any mandatory check has failed, transition the stage status to \texttt{HOLD}; if any mandatory check is incomplete, maintain status as \texttt{PENDING}.
     \item For checks requiring documentation, verify that the uploaded evidence file exists and that its live byte hash matches the recorded hash.
-    \item Verify that critical reports originate from an issuer recognized as \texttt{TRUSTED\_DEMO}.
-    \item If all checks pass, build the stage snapshot, commit the snapshot hash and evidence hashes to the smart contract, and transition the stage to \texttt{APPROVED}.
+    \item Verify that critical reports originate from an issuer recognized as \texttt{TRUSTED\_DEMO} in the trust registry.
+    \item If all checks pass, build the stage snapshot, commit the snapshot hash and evidence hashes to the smart contract, and transition the stage status to \texttt{APPROVED}.
 \end{enumerate}
 
-\vspace{0.3cm}
+\vspace{0.4cm}
 \noindent \textbf{Algorithm 3: Consumer Verification}
-\begin{enumerate}[leftmargin=1.5em]
+\begin{enumerate}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
     \item Search the product in the local repository by \texttt{product\_code}; if absent, return \texttt{NOT\_FOUND}.
-    \item Recompute the canonical metadata hash $H_{local}$ from SQLite records and query $H_{chain}$ from the blockchain contract.
-    \item If $H_{local} \neq H_{chain}$, return \texttt{SUSPICIOUS} with a tamper alert flag.
+    \item Recompute canonical metadata hash $H_{\text{local}}$ from SQLite records and query on-chain commitment $H_{\text{chain}}$ from the smart contract.
+    \item If $H_{\text{local}} \neq H_{\text{chain}}$, return \texttt{SUSPICIOUS} with a tamper alert flag.
     \item Otherwise, return \texttt{AUTHENTIC} with the redacted stage timeline, role-based provenance, and public evidence attachments.
 \end{enumerate}
 
+\clearpage
 \section{Design Details}
 \begin{table}[H]
 \centering
 \caption{Backend Modules and Responsibilities}
 \label{tab:modules}
 \small
-\begin{tabularx}{\textwidth}{p{3.5cm} X}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{L{4.2cm} Y}
 \toprule
 \textbf{Module} & \textbf{Responsibility} \\
 \midrule
@@ -542,7 +598,8 @@ Figure 5.7 shows the relational database schema implemented in SQLite, modeling 
 \caption{Roles and Permitted Actions}
 \label{tab:roles}
 \small
-\begin{tabularx}{\textwidth}{p{3.0cm} X}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{L{3.2cm} Y}
 \toprule
 \textbf{Role} & \textbf{Permitted Actions} \\
 \midrule
@@ -561,7 +618,8 @@ Consumer & Public read-only verification; no account required \\
 \caption{Data Placement Matrix}
 \label{tab:dataplc}
 \small
-\begin{tabularx}{\textwidth}{p{3.0cm} X}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{L{4.0cm} Y}
 \toprule
 \textbf{Location} & \textbf{Stored Information} \\
 \midrule
@@ -588,12 +646,13 @@ The platform operates on a local SQLite database populated with deterministic te
 \caption{Seeded Input Data of the Demonstration}
 \label{tab:seed_data}
 \small
-\begin{tabularx}{\textwidth}{p{4.0cm} X}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{L{4.2cm} Y}
 \toprule
 \textbf{Item} & \textbf{Details} \\
 \midrule
 Operational Users & 5 accounts (Supplier, Manufacturer, Distributor, Retailer, Admin) with Argon2 passwords \\
-Flagship Product & Aurelia Prestige Renewal Serum, Code: \texttt{OC-LUX-SERUM-0001}, Batch: \texttt{APR-2026-001} \\
+Flagship Product & Aurelia Prestige Renewal Serum, Code: \texttt{OC\allowbreak-LUX\allowbreak-SERUM\allowbreak-0001}, Batch: \texttt{APR\allowbreak-2026\allowbreak-001} \\
 Quality Templates & 24 checks: 5 Supplier, 8 Manufacturer, 5 Distributor, 6 Retail \\
 Product Specification & 1 versioned specification covering 16 physical and chemical attributes \\
 Evidence Issuers & 6 fictional testing laboratories with \texttt{TRUSTED\_DEMO}, \texttt{UNVERIFIED}, or \texttt{REVOKED} status \\
@@ -611,7 +670,8 @@ System validation evaluates correctness, gate enforcement, and cryptographic int
 \caption{Evaluation Parameters Used for Validation}
 \label{tab:eval_params}
 \small
-\begin{tabularx}{\textwidth}{p{4.0cm} X}
+\renewcommand{\arraystretch}{1.20}
+\begin{tabularx}{\textwidth}{L{4.2cm} Y}
 \toprule
 \textbf{Parameter} & \textbf{How It Is Validated} \\
 \midrule
@@ -628,7 +688,8 @@ Test Suite Pass Rate & 100\% pass rate across 51 backend unit/integration tests 
 \end{tabularx}
 \end{table}
 
-Figure 6.1 shows the distribution of automated test suites covering the application.
+\clearpage
+\noindent Figure 6.1 shows the distribution of automated test suites covering the application.
 
 \begin{figure}[H]
 \centering
@@ -645,7 +706,8 @@ Tables 6.3 and 6.4 list the software tools and minimum hardware specifications r
 \caption{Software Requirements}
 \label{tab:sw_req}
 \small
-\begin{tabularx}{\textwidth}{p{3.5cm} X}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{L{4.0cm} Y}
 \toprule
 \textbf{Component} & \textbf{Version / Tool} \\
 \midrule
@@ -664,7 +726,8 @@ Testing Framework & Pytest 9, Hardhat Test Runner, Headless Chrome \\
 \caption{Hardware Requirements}
 \label{tab:hw_req}
 \small
-\begin{tabularx}{\textwidth}{p{3.5cm} X}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{L{4.0cm} Y}
 \toprule
 \textbf{Item} & \textbf{Specification} \\
 \midrule
@@ -699,7 +762,8 @@ Table 7.1 outlines the division of responsibilities among the four project team 
 \caption{Team Roles and Responsibilities}
 \label{tab:team_roles}
 \small
-\begin{tabularx}{\textwidth}{p{4.5cm} p{3.5cm} X}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{L{4.2cm} L{3.8cm} Y}
 \toprule
 \textbf{Member} & \textbf{Role} & \textbf{Key Responsibilities} \\
 \midrule
@@ -720,7 +784,7 @@ Phases progressed from initial requirements capture and standards mapping to sma
 
 The implementation of OriginChain delivers the following tangible results:
 
-\begin{enumerate}[leftmargin=1.5em]
+\begin{enumerate}[leftmargin=1.8em, itemsep=4pt, parsep=0pt]
     \item \textbf{Working End-to-End Traceability System:} A functional application demonstrating custody and quality hand-offs for luxury cosmetics from ingredient supplier to retail sale.
     \item \textbf{Tamper-Evident Product Identity:} Any unauthorized alteration of product records in the application database is instantly flagged as \texttt{SUSPICIOUS} during consumer verification.
     \item \textbf{Cryptographically Verifiable Evidence:} All certificates and inspection documents are bound to Keccak-256 hashes, with on-demand status reporting (\texttt{VERIFIED}, \texttt{MISMATCH}, or \texttt{FILE\_MISSING}).
@@ -743,7 +807,8 @@ Because OriginChain operates entirely on open-source software and a local EVM te
 \caption{Projected Cost Analysis (Indicative Estimates)}
 \label{tab:cost}
 \small
-\begin{tabularx}{\textwidth}{p{4.5cm} p{4.5cm} X}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{L{4.5cm} L{4.5cm} Y}
 \toprule
 \textbf{Component} & \textbf{Technology Used} & \textbf{Estimated Prototype Cost (INR)} \\
 \midrule
@@ -767,6 +832,9 @@ In production deployment, blockchain transaction costs depend heavily on the tar
 % -------------------------------------------------------------
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{References}
+\small
+\setlength{\itemsep}{1.5pt}
+\setlength{\parsep}{0pt}
 
 \bibitem{ref1} OECD and European Union Intellectual Property Office (EUIPO), \textit{Global Trade in Fakes: A Worrying Threat}, Paris, France: OECD Publishing, 2021. doi: 10.1787/74c81154-en.
 
