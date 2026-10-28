@@ -27,3 +27,7 @@ working/*.lot
 # OS generated
 .DS_Store
 Thumbs.db
+
+# Temporary audit and comparison renders
+output/*.png
+working/

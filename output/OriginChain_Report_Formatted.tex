@@ -42,24 +42,27 @@
   skip=8pt
 }
 
-% Chapter and section title formatting
+% Chapter and section title formatting (Strictly aligned with university reference)
 \titleformat{\chapter}[display]
-  {\normalfont\bfseries\centering}{\Large CHAPTER \thechapter}{8pt}{\LARGE\uppercase}
-\titlespacing*{\chapter}{0pt}{-10pt}{20pt}
+  {\normalfont\bfseries\centering}{\fontsize{14pt}{17pt}\selectfont CHAPTER \thechapter}{6pt}{\fontsize{15pt}{18pt}\selectfont\uppercase}
+\titlespacing*{\chapter}{0pt}{-12pt}{16pt}
 
 \titleformat{\section}
-  {\normalfont\bfseries\large}{\thesection}{1em}{}
-\titlespacing*{\section}{0pt}{14pt}{6pt}
+  {\normalfont\bfseries\fontsize{13pt}{16pt}\selectfont}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{12pt}{5pt}
 
 \titleformat{\subsection}
-  {\normalfont\bfseries\normalsize}{\thesubsection}{1em}{}
-\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+  {\normalfont\bfseries\fontsize{12pt}{15pt}\selectfont}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{9pt}{3pt}
 
 % Table column helper definitions
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
+\renewcommand{\contentsname}{CONTENTS}
+\renewcommand{\listfigurename}{LIST OF FIGURES}
+\renewcommand{\listtablename}{LIST OF TABLES}
 \begin{document}
 
 % -------------------------------------------------------------
@@ -68,42 +71,43 @@
 \begin{titlepage}
 \thispagestyle{empty}
 \begin{center}
-    \vspace*{0.2cm}
-    {\large \textbf{ORIGINCHAIN: BLOCKCHAIN-BASED QUALITY ASSURANCE,\\
-    AUTHENTICATION AND SUPPLY-CHAIN TRACEABILITY\\
-    FOR LUXURY COSMETICS}\par}
+    \vspace*{-0.9cm}
+    {\fontsize{17.5pt}{22pt}\selectfont \textbf{ORIGINCHAIN -- AUTHENTIC PRODUCT TRACKING\
+    USING BLOCKCHAIN ACROSS SUPPLY CHAIN}\par}
     
-    \vspace{1.0cm}
-    {\normalsize Submitted in partial fulfilment of the requirements of the degree of\par}
-    \vspace{0.3cm}
-    {\large \textbf{BACHELOR OF COMPUTER ENGINEERING}\par}
-    
-    \vspace{0.8cm}
-    {\normalsize by\par}
-    \vspace{0.3cm}
-    {\textbf{Durva Waghchaure (23102152)}\par}
-    \vspace{0.15cm}
-    {\textbf{Aryan Singh (23102154)}\par}
-    \vspace{0.15cm}
-    {\textbf{Purvika Thombare (23102097)}\par}
-    \vspace{0.15cm}
-    {\textbf{Aradhya Thakur (23102110)}\par}
-    
-    \vspace{0.9cm}
-    {\normalsize Under the Guidance of\par}
-    \vspace{0.25cm}
-    {\large \textbf{Prof. Pranali Patil}\par}
-    
-    \vfill
-    \includegraphics[width=2.6cm]{images/college_logo.png}\par
+    \vspace{0.85cm}
+    {\fontsize{12pt}{15pt}\selectfont Submitted in partial fulfilment of the requirements of the degree of\par}
     \vspace{0.35cm}
-    {\large \textbf{Department of Computer Engineering}\par}
-    \vspace{0.15cm}
-    {\large \textbf{A. P. SHAH INSTITUTE OF TECHNOLOGY, THANE}\par}
-    \vspace{0.15cm}
-    {\normalsize \textbf{University of Mumbai}\par}
-    \vspace{0.15cm}
-    {\normalsize \textbf{2026--2027}\par}
+    {\fontsize{15.5pt}{19pt}\selectfont BACHELOR OF COMPUTER ENGINEERING\par}
+    
+    \vspace{0.65cm}
+    {\fontsize{14pt}{17pt}\selectfont by\par}
+    \vspace{0.35cm}
+    {\fontsize{14.5pt}{19pt}\selectfont
+    Durva Waghchaure, 23102152\par
+    \vspace{0.25cm}
+    Aryan Singh, 23102154\par
+    \vspace{0.25cm}
+    Purvika Thombare, 23102097\par
+    \vspace{0.25cm}
+    Aradhya Thakur, 23102110\par}
+    
+    \vspace{0.7cm}
+    {\fontsize{14pt}{17pt}\selectfont Guide\par}
+    \vspace{0.35cm}
+    {\fontsize{14.5pt}{18pt}\selectfont Prof. Pranali Patil\par}
+    
+    \vspace{0.7cm}
+    \includegraphics[width=4.9cm,height=3.9cm,keepaspectratio]{images/college_logo.png}\par
+    
+    \vspace{0.7cm}
+    {\fontsize{14.5pt}{18pt}\selectfont Department of Computer Engineering\par}
+    \vspace{0.2cm}
+    {\fontsize{14.5pt}{18pt}\selectfont A. P. SHAH INSTITUTE OF TECHNOLOGY, THANE\par}
+    \vspace{0.2cm}
+    {\fontsize{14.5pt}{18pt}\selectfont University of Mumbai\par}
+    \vspace{0.2cm}
+    {\fontsize{14.5pt}{18pt}\selectfont 2026--2027\par}
 \end{center}
 \end{titlepage}
 
@@ -115,84 +119,96 @@
 % -------------------------------------------------------------
 \newpage
 \thispagestyle{plain}
+
+\begin{tabular}{@{}p{2.4cm}@{\hspace{0.3cm}}p{11.3cm}@{}}
+    \includegraphics[width=2.4cm,height=2.0cm,keepaspectratio]{images/college_logo.png} & 
+    {\fontsize{14pt}{17pt}\selectfont \textbf{A. P. SHAH INSTITUTE OF TECHNOLOGY, THANE}}
+\end{tabular}
+
+\vspace{0.8cm}
 \begin{center}
-    \includegraphics[width=2.2cm]{images/college_logo.png}\par
-    \vspace{0.25cm}
-    {\large \textbf{A. P. SHAH INSTITUTE OF TECHNOLOGY, THANE}\par}
-    \vspace{0.45cm}
-    {\Large \textbf{CERTIFICATE}\par}
+    {\fontsize{16pt}{20pt}\selectfont \textbf{CERTIFICATE}\par}
 \end{center}
-\vspace{0.5cm}
-\noindent This is to certify that the project entitled \textbf{``OriginChain: Blockchain-Based Quality Assurance, Authentication and Supply-Chain Traceability for Luxury Cosmetics''} is a bonafide work of \textbf{Durva Waghchaure (23102152)}, \textbf{Aryan Singh (23102154)}, \textbf{Purvika Thombare (23102097)}, and \textbf{Aradhya Thakur (23102110)} submitted to the University of Mumbai in partial fulfilment of the requirement for the award of the degree of \textbf{Bachelor of Engineering in Computer Engineering}.
+
+\vspace{0.4cm}
+\noindent This is to certify that the project entitled \textbf{``OriginChain -- Authentic Product Tracking using Blockchain across Supply Chain''} is a bonafide work of \textbf{Durva Waghchaure (23102152), Aryan Singh (23102154), Purvika Thombare (23102097)}, and \textbf{Aradhya Thakur (23102110)} submitted to the University of Mumbai in partial fulfilment of the requirement for the award of the degree of \textbf{Bachelor of Engineering in Computer Engineering}.
 
 \vspace{2.2cm}
 \noindent
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}cc}
-    \underline{\hspace{5.2cm}} & \underline{\hspace{5.2cm}} \\
-    \textbf{Prof. Pranali Patil} & \textbf{Dr. Rushikesh R. Nikam} \\
+\noindent
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
+    \underline{\hspace{5.5cm}} & \underline{\hspace{5.5cm}} \\
     Guide & Project Coordinator \\
-    \vspace{2.0cm} & \vspace{2.0cm} \\
-    \underline{\hspace{5.2cm}} & \underline{\hspace{5.2cm}} \\
-    \textbf{Dr. Sachin Malave} & \textbf{Dr. Uttam Kolekar} \\
+    Prof. Pranali Patil & Dr. Rushikesh R. Nikam \\[2.0cm]
+    \underline{\hspace{5.5cm}} & \underline{\hspace{5.5cm}} \\
     Head of Department & Principal \\
+    Dr. Sachin Malave & Dr. Uttam Kolekar \\
 \end{tabular*}
 
-\vspace{0.8cm}
-\noindent Date: \underline{\hspace{3.5cm}}
-
-% -------------------------------------------------------------
+\vspace{1.5cm}
+\noindent Date:\par
 % PROJECT APPROVAL (Page iii)
 % -------------------------------------------------------------
 \newpage
 \thispagestyle{plain}
-\begin{center}
-    \includegraphics[width=2.2cm]{images/college_logo.png}\par
-    \vspace{0.25cm}
-    {\large \textbf{A. P. SHAH INSTITUTE OF TECHNOLOGY, THANE}\par}
-    \vspace{0.45cm}
-    {\Large \textbf{Project Report Approval for B.E.}\par}
-\end{center}
-\vspace{0.5cm}
-\noindent This project report entitled \textbf{``OriginChain: Blockchain-Based Quality Assurance, Authentication and Supply-Chain Traceability for Luxury Cosmetics''} by \textbf{Durva Waghchaure, Aryan Singh, Purvika Thombare, and Aradhya Thakur} is approved for the degree of \textbf{Bachelor of Engineering in Computer Engineering, 2026--2027}.
 
-\vspace{2.0cm}
-\noindent \textbf{Examiners:}
+\begin{tabular}{@{}p{2.4cm}@{\hspace{0.3cm}}p{11.3cm}@{}}
+    \includegraphics[width=2.4cm,height=2.0cm,keepaspectratio]{images/college_logo.png} & 
+    {\fontsize{14pt}{17pt}\selectfont \textbf{A. P. SHAH INSTITUTE OF TECHNOLOGY, THANE}}
+\end{tabular}
 
 \vspace{0.8cm}
+\begin{center}
+    {\fontsize{16pt}{20pt}\selectfont \textbf{Project Report Approval for B.E.}\par}
+\end{center}
+
+\vspace{0.4cm}
+\begin{sloppypar}
+\noindent This project report entitled \textbf{OriginChain -- Authentic Product Tracking using Blockchain across Supply Chain''} is approved for the degree of \textbf{Bachelor of Engineering in Computer Engineering, 2026--2027} as a bonafide submission by \textbf{Durva Waghchaure, Aryan Singh, Purvika Thombare}, and \textbf{Aradhya Thakur}.
+\end{sloppypar}
+
+\vspace{1.8cm}
+\noindent
 \noindent
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
     \textbf{Examiner Name} & \textbf{Signature} \\[1.6cm]
-    1. \underline{\hspace{6.5cm}} & \underline{\hspace{5.5cm}} \\[1.6cm]
-    2. \underline{\hspace{6.5cm}} & \underline{\hspace{5.5cm}} \\
+    1. \underline{\hspace{5.5cm}} & \underline{\hspace{5.5cm}} \\[1.6cm]
+    2. \underline{\hspace{5.5cm}} & \underline{\hspace{5.5cm}} \\
 \end{tabular*}
 
-\vspace{2.0cm}
-\noindent Date: \underline{\hspace{4cm}} \hfill Place: \underline{\hspace{4cm}}
-
-% -------------------------------------------------------------
+\vspace{2.2cm}
+\noindent Date: \par
+\vspace{0.6cm}
+\noindent Place: \par
 % DECLARATION (Page iv)
 % -------------------------------------------------------------
 \newpage
 \thispagestyle{plain}
-\begin{center}
-    {\Large \textbf{Declaration}\par}
-\end{center}
-\vspace{0.6cm}
-\noindent We declare that this written submission represents our ideas in our own words and where others' ideas or words have been included, we have adequately cited and referenced the original sources. We also declare that we have adhered to all principles of academic honesty and integrity and have not misrepresented or fabricated or falsified any idea/data/fact/source in our submission. We understand that any violation of the above will be cause for disciplinary action by the Institute and can also evoke penal action from the sources which have thus not been properly cited or from whom proper permission has not been taken when needed.
 
-\vspace{2.0cm}
-\noindent
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr}
-    \underline{\hspace{5.5cm}} & \underline{\hspace{5.5cm}} \\
-    \textbf{Durva Waghchaure (23102152)} & \textbf{Aryan Singh (23102154)} \\[2.0cm]
-    \underline{\hspace{5.5cm}} & \underline{\hspace{5.5cm}} \\
-    \textbf{Purvika Thombare (23102097)} & \textbf{Aradhya Thakur (23102110)} \\
-\end{tabular*}
+\begin{center}
+    \vspace*{0.2cm}
+    {\fontsize{16pt}{20pt}\selectfont \textbf{Declaration}\par}
+\end{center}
+
+\vspace{0.5cm}
+\noindent We declare that this written submission represents our ideas in our own words and where others' ideas or words have been included, we have adequately cited and referenced the original sources. We also declare that We have adhered to all principles of academic honesty and integrity and have not misrepresented or fabricated or falsified any idea/data/fact/source in my submission. We understand that any violation of the above will be cause for disciplinary action by the Institute and can also evoke penal action from the sources which have thus not been properly cited or from whom proper permission has not been taken when needed.
 
 \vspace{1.8cm}
-\noindent Date: \underline{\hspace{3.5cm}}
+\begin{flushright}
+\begin{tabular}{r}
+    \underline{\hspace{6.0cm}} \\[-0.2cm]
+    Durva Waghchaure -- 23102152 \\[1.0cm]
+    \underline{\hspace{6.0cm}} \\[-0.2cm]
+    Aryan Singh -- 23102154 \\[1.0cm]
+    \underline{\hspace{6.0cm}} \\[-0.2cm]
+    Purvika Thombare -- 23102097 \\[1.0cm]
+    \underline{\hspace{6.0cm}} \\[-0.2cm]
+    Aradhya Thakur -- 23102110 \\
+\end{tabular}
+\end{flushright}
 
-% -------------------------------------------------------------
+\vspace{0.6cm}
+\noindent Date:\par
 % ABSTRACT (Page v - Single page, perfectly fitted)
 % -------------------------------------------------------------
 \newpage
@@ -201,7 +217,7 @@
     {\Large \textbf{Abstract}\par}
 \end{center}
 \vspace{0.25cm}
-{\small\setstretch{1.12}
+{\small\setstretch{1.12}\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}
 Counterfeit and mishandled luxury cosmetics are difficult for a buyer to detect: a bottle may look perfect while its contents, batch history or storage conditions differ from what the label claims. Static barcodes and printed seals are easy to copy, and a conventional database can be edited by anyone with enough privilege. This project, \textbf{OriginChain}, proposes and demonstrates a blockchain-based system that combines stage-by-stage quality assurance with tamper-evident product authentication and traceability for luxury cosmetics.
 
 The implemented demonstration follows one fictional flagship product, the Aurelia Prestige Renewal Serum, from raw-material receipt through manufacturing, distribution and retail to consumer verification. Each actor (supplier, manufacturer, distributor, retailer) must pass a defined set of quality checks, with supporting PDF/PNG/JPEG evidence, before custody can move on. Evidence files are hashed with Keccak-256; compact fingerprints of the product, of each approved stage and of each evidence file are committed to a Solidity smart contract running on a local Hardhat Ethereum Virtual Machine. Full operational records stay off-chain in SQLite, so the ledger remains small and private. The backend is built with FastAPI and Web3.py; users authenticate with Argon2-hashed passwords and short-lived JSON Web Tokens, and role-based access control is enforced on the server and again by the contract's owner checks.
@@ -230,50 +246,50 @@ A consumer can enter a product code and receive a redacted, read-only verificati
 \listoftables
 
 % -------------------------------------------------------------
-% ABBREVIATIONS (Page viii)
+% ABBREVIATION (Page x)
 % -------------------------------------------------------------
 \newpage
 \thispagestyle{plain}
 \begin{center}
-    {\Large \textbf{ABBREVIATIONS}\par}
+    \vspace*{0.2cm}
+    {\fontsize{16pt}{20pt}\selectfont \textbf{ABBREVIATION}\par}
 \end{center}
-\vspace{0.4cm}
-\noindent
-\begin{table}[H]
-\centering
-\renewcommand{\arraystretch}{1.12}
-\begin{tabularx}{\textwidth}{p{3.2cm} Y}
-\toprule
-\textbf{Abbreviation} & \textbf{Expansion} \\
-\midrule
-ABI & Application Binary Interface \\
-API & Application Programming Interface \\
-BIS & Bureau of Indian Standards \\
-CoA & Certificate of Analysis \\
-DApp & Decentralized Application \\
-DFD & Data Flow Diagram \\
-EVM & Ethereum Virtual Machine \\
-GMP & Good Manufacturing Practice \\
-IPFS & InterPlanetary File System \\
-ISO & International Organization for Standardization \\
-JWT & JSON Web Token \\
-NFC & Near Field Communication \\
-OECD & Organisation for Economic Co-operation and Development \\
-PET & Preservative Efficacy Testing \\
-QR & Quick Response \\
-RBAC & Role-Based Access Control \\
-RFID & Radio-Frequency Identification \\
-SDG & Sustainable Development Goals \\
-UML & Unified Modeling Language \\
-\bottomrule
-\end{tabularx}
-\end{table}
+\vspace{0.6cm}
 
-\newpage
+\noindent
+\renewcommand{\arraystretch}{1.28}
+\begin{tabular}{|p{2.6cm}|p{11.0cm}|}
+\hline
+\textbf{DApp} & Decentralized Application \\ \hline
+\textbf{QR} & Quick Response \\ \hline
+\textbf{IPFS} & Inter Planetary File System \\ \hline
+\textbf{SDG} & Sustainable Development Goals \\ \hline
+\textbf{UI} & User Interface \\ \hline
+\textbf{API} & Application Programming Interface \\ \hline
+\textbf{DB} & Database \\ \hline
+\textbf{UML} & Unified Modeling Language \\ \hline
+\textbf{DFD} & Data Flow Diagram \\ \hline
+\textbf{DAO} & Decentralized Autonomous Organization \\ \hline
+\textbf{AI} & Artificial Intelligence \\ \hline
+\textbf{CRUD} & Create, Read, Update, Delete \\ \hline
+\textbf{SDK} & Software Development Kit \\ \hline
+\textbf{NFT} & Non-Fungible Token \\ \hline
+\textbf{JSON} & JavaScript Object Notation \\ \hline
+\textbf{ERC} & Ethereum Request for Comment \\ \hline
+\textbf{ETH} & Ethereum (Cryptocurrency) \\ \hline
+\textbf{DBMS} & Database Management System \\ \hline
+\textbf{SDLC} & Software Development Life Cycle \\ \hline
+\textbf{JWT} & JSON Web Token \\ \hline
+\textbf{CI/CD} & Continuous Integration / Continuous Deployment \\ \hline
+\end{tabular}
+
+% -------------------------------------------------------------
+% MAIN BODY (Arabic Numbering starts at Chapter 1: Page 1)
+% -------------------------------------------------------------
+\cleardoublepage
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-% -------------------------------------------------------------
 % CHAPTER 1: INTRODUCTION
 % -------------------------------------------------------------
 \chapter{Introduction}
@@ -335,7 +351,7 @@ Related work is surveyed in Chapter 2. Limitations of existing systems are ident
 \chapter{Literature Survey}
 
 \section{Overview}
-This chapter reviews published literature bearing on blockchain traceability, anti-llowbreak counterfeiting, smart contracts, and cosmetics regulations. Each group of papers is appraised for what it contributes and what it leaves open for this project.
+This chapter reviews published literature on blockchain traceability, anti-counterfeiting solutions, smart contracts, and cosmetics regulatory standards. Each group of papers is appraised for its direct contributions and research gaps.
 
 \section{Blockchain and Smart-Contract Foundations}
 Nakamoto [2] introduced peer-to-peer electronic cash governed by proof-of-work and chained cryptographic hashes, eliminating the need for a central trusted intermediary. Wood [4] formalised the Ethereum state machine and smart contract execution environment, enabling programmatic rule enforcement such as ``only the current owner may transfer custody.'' Zheng et al. [3], [14] surveyed blockchain architectures, highlighting on-chain scalability, storage limits, and high gas costs, which justify OriginChain's hybrid design of anchoring hashes on-chain while storing rich data off-chain. Christidis and Devetsikiotis [5] and Reyna et al. [15] analyzed IoT and decentralized systems, emphasizing off-chain storage management for large files such as laboratory reports.
@@ -411,7 +427,7 @@ Luxury cosmetics are highly susceptible to counterfeiting and improper storage, 
 
 \section{Objectives}
 \begin{enumerate}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
-    \item To record product identity and custody on an append-llowbreak only, tamper-llowbreak evident blockchain ledger that cannot be silently modified by the application database.
+    \item Record product identity and custody on an append-only, tamper-evident blockchain ledger that cannot be silently modified by the application database.
     \item To enforce stage-by-stage quality gates (Supplier, Manufacturer, Distributor, Retailer) so that custody transfer is blocked until the current stage passes all mandatory checks.
     \item To cryptographically bind supporting evidence documents (Certificates of Analysis, test reports, photographs) using Keccak-256 hashes.
     \item To model evidence issuer trustworthiness independently from raw file integrity, preserving historical verification states.
@@ -536,7 +552,7 @@ Figure 5.7 shows the relational database schema implemented in SQLite, modeling 
 \section{Algorithms}
 \noindent \textbf{Algorithm 1: Product Metadata Hashing}
 \begin{enumerate}[leftmargin=1.8em, itemsep=3pt, parsep=0pt]
-    \item Build a metadata dictionary with canonical keys: \texttt{batch\allowbreak\_number}, \texttt{brand}, \texttt{description}, \texttt{name}, and \texttt{product\allowbreak\_code}.
+    \item Construct a metadata dictionary with canonical keys: \texttt{batch\_\allowbreak number}, \texttt{brand}, \texttt{description}, \texttt{name}, and \texttt{product\_\allowbreak code}.
     \item Serialize into canonical JSON with sorted keys, no whitespace padding, and UTF-8 encoding.
     \item Compute the metadata hash:
     \[
@@ -632,6 +648,75 @@ File System & Raw uploaded evidence files under \texttt{backend/uploads/}, index
 
 \section{Methodology}
 The project followed an agile, test-driven engineering approach. Core smart contract constraints were authored and verified first in Hardhat, followed by backend REST endpoints in FastAPI. The quality gate engine was integrated with deterministic seeding, followed by evidence file hashing and role-based access enforcement. Finally, the responsive web interface was integrated and validated using end-to-end automated smoke tests.
+\clearpage
+\section{Implementation Details (Screenshots)}
+This section illustrates the operational user interfaces of OriginChain across authentication, batch progression, quality inspection, cryptographic evidence verification, and administrative monitoring.
+
+\subsection{Sign-in and Role Switching}
+Figure 5.8 illustrates the sign-in portal displaying the predefined role-based demo accounts (Supplier, Manufacturer, Distributor, Retailer, and Admin) backed by Argon2 password hashing and JWT issuance.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\textwidth,keepaspectratio]{images/screenshots/ui_01_signin.png}
+\caption{Sign-in Page with Role-Based Accounts}
+\label{fig:ui_signin}
+\end{figure}
+
+\clearpage
+\subsection{Supply-Chain Product and Batch Overview}
+Figure 5.9 shows the comprehensive supply-chain dashboard displaying product attributes, active batches, the four-stage progression tracker, and the corresponding smart-contract transaction commitments.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\textwidth,keepaspectratio]{images/screenshots/ui_02_overview.png}
+\caption{Product and Batch Supply-Chain Overview}
+\label{fig:ui_overview}
+\end{figure}
+
+\clearpage
+\subsection{Quality Board and Check Enforcement}
+Figure 5.10 depicts the quality-gate board where quality checks, lab parameters, and required evidence files must be validated before an authorized party can seal the stage and transfer custody.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\textwidth,keepaspectratio]{images/screenshots/ui_03_qualityboard.png}
+\caption{Stage Quality Board with Mandatory Check Enforcement}
+\label{fig:ui_qualityboard}
+\end{figure}
+
+\clearpage
+\subsection{Certificate of Authenticity}
+Figure 5.11 presents the generated Certificate of Authenticity incorporating cryptographic hashes ($ and $), stage seal signatures, timestamped custody history, and the verifiable verification QR code.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\textwidth,keepaspectratio]{images/screenshots/ui_04_certificate.png}
+\caption{Digital Certificate of Authenticity with Blockchain Hashes}
+\label{fig:ui_certificate}
+\end{figure}
+
+\clearpage
+\subsection{Public Consumer Verification}
+Figure 5.12 shows the public, unauthenticated consumer verification screen accessed via QR scan, validating real-time integrity against on-chain records and displaying the product provenance journey.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\textwidth,keepaspectratio]{images/screenshots/ui_05_verification.png}
+\caption{Public Consumer Verification Portal}
+\label{fig:ui_verification}
+\end{figure}
+
+\clearpage
+\subsection{Administrative Audit and Activity Log}
+Figure 5.13 presents the admin security audit log capturing chronological, immutable events with timestamps, actor IDs, IP records, and cryptographic state transitions across the platform.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\textwidth,keepaspectratio]{images/screenshots/ui_06_adminlog.png}
+\caption{Administrative Governance and Security Activity Log}
+\label{fig:ui_adminlog}
+\end{figure}
+
 
 % -------------------------------------------------------------
 % CHAPTER 6: EXPERIMENTAL SETUP
@@ -828,10 +913,33 @@ Hosting Infrastructure & Local Developer Laptop & \textbf{INR 0} \\
 In production deployment, blockchain transaction costs depend heavily on the target network. OriginChain requires 14 on-chain transactions per product batch across all four supply-chain stages. On the Polygon proof-of-stake network, this translates to approximately INR~2.50 ($\approx \$0.03$) per batch, compared to upwards of INR~2,000 on Ethereum mainnet. A hosted enterprise pilot managing 100 batches per month would incur approximately INR~1,200 ($\approx \$15$) monthly, primarily for cloud virtual machine hosting and database backups.
 
 % -------------------------------------------------------------
-% REFERENCES
 % -------------------------------------------------------------
+% CHAPTER 10: REFERENCES
+% -------------------------------------------------------------
+\chapter{References}
+\label{chap:references}
+
+\makeatletter
+\renewenvironment{thebibliography}[1]
+     {\list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+\makeatother
+
 \begin{thebibliography}{99}
-\addcontentsline{toc}{chapter}{References}
 \small
 \setlength{\itemsep}{1.5pt}
 \setlength{\parsep}{0pt}
